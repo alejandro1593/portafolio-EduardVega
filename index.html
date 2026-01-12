@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Alejandro Vega Díaz | Backend Developer</title>
+    <link rel="stylesheet" href="styles_backend.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="binary-background"></div>
+    <div class="code-rain"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">EAVD</span>
+                <span class="logo-slash">/</span>
+                <span class="logo-bracket">&gt;</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" data-text="// inicio"><span class="code-keyword">const</span> <span class="code-var">inicio</span></a></li>
+                <li><a href="#sobre-mi" data-text="// sobre-mi"><span class="code-keyword">const</span> <span class="code-var">sobre_mi</span></a></li>
+                <li><a href="#habilidades" data-text="// habilidades"><span class="code-keyword">const</span> <span class="code-var">habilidades</span></a></li>
+                <li><a href="#proyectos" data-text="// proyectos"><span class="code-keyword">const</span> <span class="code-var">proyectos</span></a></li>
+                <li><a href="#contacto" data-text="// contacto"><span class="code-keyword">const</span> <span class="code-var">contacto</span></a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="code-decoration-left">
+                <div class="code-block">
+                    <span class="code-keyword">const</span> <span class="code-var">developer</span> <span class="code-operator">=</span> {<br>
+                    &nbsp;&nbsp;<span class="code-prop">nombre</span>: <span class="code-string">"Eduardo"</span>,<br>
+                    &nbsp;&nbsp;<span class="code-prop">apellido</span>: <span class="code-string">"Vega"</span>,<br>
+                    &nbsp;&nbsp;<span class="code-prop">rol</span>: <span class="code-string">"Backend"</span>,<br>
+                    &nbsp;&nbsp;<span class="code-prop">apasionado</span>: <span class="code-boolean">true</span><br>
+                    };
+                </div>
+            </div>
+            
+            <div class="hero-text">
+                <div class="typing-container">
+                    <span class="typing-text" id="typing"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="Eduardo">Eduardo</span>
+                    <span class="glitch" data-text="Alejandro">Alejandro</span>
+                    <br>
+                    <span class="glitch" data-text="Vega">Vega</span>
+                    <span class="glitch" data-text="Díaz">Díaz</span>
+                </h1>
+                <p class="hero-subtitle">Backend Developer</p>
+                <div class="hero-tech-stack">
+                    <span class="tech-item"><i class="nodejs-icon">⚡</i> Node.js</span>
+                    <span class="tech-item"><i class="express-icon">🚀</i> Express</span>
+                    <span class="tech-item"><i class="docker-icon">🐳</i> Docker</span>
+                    <span class="tech-item"><i class="github-icon">🔗</i> GitHub</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#proyectos" class="btn btn-primary">
+                        <span class="btn-code">&lt;</span>
+                        <span class="btn-text">Ver Proyectos</span>
+                        <span class="btn-code">/&gt;</span>
+                    </a>
+                    <a href="#contacto" class="btn btn-secondary">
+                        <span class="btn-code">&lt;</span>
+                        <span class="btn-text">Contactar</span>
+                        <span class="btn-code">/&gt;</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="code-decoration-right">
+                <div class="code-block">
+                    <span class="code-keyword">class</span> <span class="code-class">BackendDeveloper</span> {<br>
+                    &nbsp;&nbsp;<span class="code-keyword">constructor</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">super</span>();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.<span class="code-prop">passion</span> <span class="code-operator">=</span> <span class="code-string">"∞"</span>;<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-text">
+                <span class="code-keyword">function</span> <span class="code-func">scrollDown</span>() {<br>
+                &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"↓"</span>;<br>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-comment">// Sobre mí</span>
+                <h2 class="section-title">
+                    <span class="code-keyword">const</span> <span class="code-var">sobre_mi</span> <span class="code-operator">=</span>
+                </h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-code">
+                    <div class="code-panel">
+                        <div class="panel-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="panel-title">about.js</span>
+                        </div>
+                        <pre class="code-content"><span class="code-keyword">const</span> <span class="code-var">eduardo</span> <span class="code-operator">=</span> {
+  <span class="code-prop">nombre</span>: <span class="code-string">"Eduardo Alejandro Vega Díaz"</span>,
+  <span class="code-prop">rol</span>: <span class="code-string">"Backend Developer"</span>,
+  <span class="code-prop">ubicacion</span>: <span class="code-string">"Venezuela"</span>,
+  <span class="code-prop">experiencia</span>: <span class="code-number">5</span>,
+  <span class="code-prop">descripcion</span>: <span class="code-string">`Desarrollador backend
+  apasionado por crear APIs robustas
+  y escalables. Especialista en
+  Node.js, Express, Docker y
+  bases de datos. Me encanta
+  transformar ideas en código
+  eficiente y optimizado.`</span>,
+  <span class="code-prop">valores</span>: [<span class="code-string">"Calidad"</span>, <span class="code-string">"Innovación"</span>, <span class="code-string">"Aprendizaje"</span>]
+};</pre>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">💻</div>
+                        <div class="stat-value"><span class="counter" data-target="50">0</span>+</div>
+                        <div class="stat-label">Proyectos</div>
+                        <div class="stat-code">
+                            <span class="code-keyword">const</span> <span class="code-var">proyectos</span> <span class="code-operator">=</span> <span class="code-number">50</span>;
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">☕</div>
+                        <div class="stat-value"><span class="counter" data-target="5">0</span></div>
+                        <div class="stat-label">Años Exp.</div>
+                        <div class="stat-code">
+                            <span class="code-keyword">const</span> <span class="code-var">años</span> <span class="code-operator">=</span> <span class="code-number">5</span>;
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value"><span class="counter" data-target="1000">0</span>+</div>
+                        <div class="stat-label">Commits</div>
+                        <div class="stat-code">
+                            <span class="code-keyword">const</span> <span class="code-var">commits</span> <span class="code-operator">=</span> <span class="code-number">1000</span>;
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value"><span class="counter" data-target="200">0</span>+</div>
+                        <div class="stat-label">Stars</div>
+                        <div class="stat-code">
+                            <span class="code-keyword">const</span> <span class="code-var">stars</span> <span class="code-operator">=</span> <span class="code-number">200</span>;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-comment">// Habilidades</span>
+                <h2 class="section-title">
+                    <span class="code-keyword">const</span> <span class="code-var">habilidades</span> <span class="code-operator">=</span>
+                </h2>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <span class="category-title">Backend</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item" data-skill="nodejs">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-level">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="express">
+                            <div class="skill-info">
+                                <span class="skill-name">Express.js</span>
+                                <span class="skill-level">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="rest">
+                            <div class="skill-info">
+                                <span class="skill-name">REST APIs</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="graphql">
+                            <div class="skill-info">
+                                <span class="skill-name">GraphQL</span>
+                                <span class="skill-level">78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="78"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="category-icon">🗄️</span>
+                        <span class="category-title">Bases de Datos</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item" data-skill="postgresql">
+                            <div class="skill-info">
+                                <span class="skill-name">PostgreSQL</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="mysql">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="mongodb">
+                            <div class="skill-info">
+                                <span class="skill-name">MongoDB</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="redis">
+                            <div class="skill-info">
+                                <span class="skill-name">Redis</span>
+                                <span class="skill-level">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="category-icon">🐳</span>
+                        <span class="category-title">DevOps</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item" data-skill="docker">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="kubernetes">
+                            <div class="skill-info">
+                                <span class="skill-name">Kubernetes</span>
+                                <span class="skill-level">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="git">
+                            <div class="skill-info">
+                                <span class="skill-name">Git & GitHub</span>
+                                <span class="skill-level">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="cicd">
+                            <div class="skill-info">
+                                <span class="skill-name">CI/CD</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <span class="category-icon">🛠️</span>
+                        <span class="category-title">Herramientas</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item" data-skill="jwt">
+                            <div class="skill-info">
+                                <span class="skill-name">JWT Auth</span>
+                                <span class="skill-level">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="testing">
+                            <div class="skill-info">
+                                <span class="skill-name">Testing (Jest/Mocha)</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="aws">
+                            <div class="skill-info">
+                                <span class="skill-name">AWS Services</span>
+                                <span class="skill-level">78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="78"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="microservices">
+                            <div class="skill-info">
+                                <span class="skill-name">Microservices</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-comment">// Proyectos</span>
+                <h2 class="section-title">
+                    <span class="code-keyword">const</span> <span class="code-var">proyectos</span> <span class="code-operator">=</span> [
+                </h2>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🚀</div>
+                        <div class="project-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <pre class="project-code"><span class="code-keyword">class</span> <span class="code-class">EcommerceAPI</span> {
+  <span class="code-keyword">constructor</span>() {
+    <span class="code-keyword">this</span>.<span class="code-prop">stack</span> <span class="code-operator">=</span> [
+      <span class="code-string">"Node.js"</span>,
+      <span class="code-string">"Express"</span>,
+      <span class="code-string">"PostgreSQL"</span>,
+      <span class="code-string">"Redis"</span>,
+      <span class="code-string">"Docker"</span>
+    ];
+  }
+}</pre>
+                        <h3 class="project-title">E-commerce API</h3>
+                        <p class="project-description">API REST completa para plataforma de e-commerce con autenticación JWT, pagos integrados y gestión de inventario en tiempo real.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <div class="project-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <pre class="project-code"><span class="code-keyword">const</span> <span class="code-var">analytics</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-class">RealTimeAnalytics</span>();
+analytics.<span class="code-method">connect</span>({
+  <span class="code-prop">database</span>: <span class="code-string">"MongoDB"</span>,
+  <span class="code-prop">streaming</span>: <span class="code-string">"WebSockets"</span>
+});</pre>
+                        <h3 class="project-title">Analytics Dashboard</h3>
+                        <p class="project-description">Sistema de análisis en tiempo real con WebSocket para visualización de datos y generación de reportes automáticos.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔐</div>
+                        <div class="project-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <pre class="project-code"><span class="code-keyword">class</span> <span class="code-class">AuthService</span> {
+  <span class="code-keyword">async</span> <span class="code-func">authenticate</span>(<span class="code-var">user</span>) {
+    <span class="code-keyword">const</span> <span class="code-var">token</span> <span class="code-operator">=</span> <span class="code-keyword">await</span> <span class="code-var">jwt</span>.<span class="code-method">sign</span>(user);
+    <span class="code-keyword">return</span> { <span class="code-prop">token</span> };
+  }
+}</pre>
+                        <h3 class="project-title">Auth Microservice</h3>
+                        <p class="project-description">Microservicio de autenticación centralizado con OAuth2, JWT, rate limiting y gestión de sesiones distribuidas.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">OAuth2</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-closing">
+                <span class="code-bracket">];</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-comment">// Contacto</span>
+                <h2 class="section-title">
+                    <span class="code-keyword">const</span> <span class="code-var">contacto</span> <span class="code-operator">=</span> {
+                </h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-code">
+                        <div class="code-panel">
+                            <div class="panel-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="panel-title">contact.js</span>
+                            </div>
+                            <pre class="code-content"><span class="code-keyword">const</span> <span class="code-var">contacto</span> <span class="code-operator">=</span> {
+  <span class="code-prop">email</span>: <span class="code-string">"eduardo.vega@email.com"</span>,
+  <span class="code-prop">github</span>: <span class="code-string">"github.com/eduardovega"</span>,
+  <span class="code-prop">linkedin</span>: <span class="code-string">"linkedin.com/in/eduardovega"</span>,
+  <span class="code-prop">ubicacion</span>: <span class="code-string">"Venezuela"</span>
+};
+
+<span class="code-keyword">function</span> <span class="code-func">enviarMensaje</span>(<span class="code-var">mensaje</span>) {
+  <span class="code-keyword">return</span> <span class="code-string">"¡Gracias!"</span>;
+}</pre>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-items">
+                        <a href="mailto:eduardo.vega@email.com" class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div class="contact-text">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">eduardo.vega@email.com</span>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item">
+                            <span class="contact-icon">🔗</span>
+                            <div class="contact-text">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">github.com/eduardovega</span>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item">
+                            <span class="contact-icon">💼</span>
+                            <div class="contact-text">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">linkedin.com/in/eduardovega</span>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div class="contact-text">
+                                <span class="contact-label">Ubicación</span>
+                                <span class="contact-value">Venezuela</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-header">
+                        <span class="form-title">Form.js</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">
+                            <span class="code-keyword">const</span> <span class="code-var">nombre</span> <span class="code-operator">=</span>
+                        </label>
+                        <input type="text" id="name" name="name" required placeholder='"Tu nombre"'>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <span class="code-keyword">const</span> <span class="code-var">email</span> <span class="code-operator">=</span>
+                        </label>
+                        <input type="email" id="email" name="email" required placeholder='"tu@email.com"'>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">
+                            <span class="code-keyword">const</span> <span class="code-var">mensaje</span> <span class="code-operator">=</span>
+                        </label>
+                        <textarea id="message" name="message" rows="5" required placeholder='"Tu mensaje..."'></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <span class="btn-code">&lt;</span>
+                        <span class="btn-text">Enviar Mensaje</span>
+                        <span class="btn-code">/&gt;</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="section-closing">
+                <span class="code-bracket">};</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-code">
+            <pre class="footer-content">
+<span class="code-keyword">const</span> <span class="code-var">footer</span> <span class="code-operator">=</span> {
+  <span class="code-prop">autor</span>: <span class="code-string">"Eduardo Alejandro Vega Díaz"</span>,
+  <span class="code-prop">año</span>: <span class="code-number">2024</span>,
+  <span class="code-prop">derechos</span>: <span class="code-string">"© Todos los derechos reservados"</span>
+};
+
+<span class="code-keyword">console</span>.<span class="code-method">log</span>(<span class="code-string">"¡Gracias por visitar mi portafolio!"</span>);</pre>
+        </div>
+    </footer>
+
+    <script src="script_backend.js"></script>
+</body>
+</html>
