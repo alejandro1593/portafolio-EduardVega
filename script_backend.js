@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.style.background = 'rgba(10, 14, 39, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 136, 0.2)';
+            navbar.style.boxShadow = '0 2px 20px rgba(52, 211, 153, 0.2)';
         } else {
             navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 136, 0.1)';
+            navbar.style.boxShadow = '0 2px 20px rgba(52, 211, 153, 0.1)';
         }
     });
 
@@ -164,26 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
         skillObserver.observe(item);
     });
 
-    document.querySelectorAll('.project-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        
-        const projectObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 150);
-                    projectObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        projectObserver.observe(card);
-    });
-
     document.querySelectorAll('.stat-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'scale(0.8)';
@@ -236,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.className = `notification notification-${type}`;
         notification.textContent = message;
         
-        const bgColor = type === 'success' ? 'rgba(0, 255, 136, 0.9)' : 'rgba(255, 85, 85, 0.9)';
+        const bgColor = type === 'success' ? 'rgba(52, 211, 153, 0.9)' : 'rgba(248, 113, 113, 0.9)';
         
         notification.style.cssText = `
             position: fixed;
@@ -251,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             background: ${bgColor};
             font-family: 'Fira Code', monospace;
-            border: 1px solid ${type === 'success' ? 'rgba(0, 255, 136, 0.5)' : 'rgba(255, 85, 85, 0.5)'};
+            border: 1px solid ${type === 'success' ? 'rgba(52, 211, 153, 0.5)' : 'rgba(248, 113, 113, 0.5)'};
         `;
 
         document.body.appendChild(notification);
@@ -345,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
             binaryText.style.cssText = `
                 position: absolute;
                 font-size: ${Math.random() * 15 + 10}px;
-                color: rgba(0, 255, 136, ${Math.random() * 0.1 + 0.05});
+                color: rgba(52, 211, 153, ${Math.random() * 0.1 + 0.05});
                 left: ${Math.random() * 100}%;
                 top: ${Math.random() * 100}%;
                 animation: floatBinary ${Math.random() * 15 + 10}s linear infinite;
@@ -367,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
             rainDrop.style.cssText = `
                 position: absolute;
                 font-size: ${Math.random() * 12 + 8}px;
-                color: rgba(0, 255, 136, ${Math.random() * 0.15 + 0.05});
+                color: rgba(52, 211, 153, ${Math.random() * 0.15 + 0.05});
                 left: ${Math.random() * 100}%;
                 top: -50px;
                 animation: rainFall ${Math.random() * 10 + 5}s linear infinite;
@@ -396,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
 
-    const parallaxElements = document.querySelectorAll('.hero-title, .project-card');
+    const parallaxElements = document.querySelectorAll('.hero-title');
     
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
@@ -431,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 position: absolute;
                 width: ${Math.random() * 4 + 2}px;
                 height: ${Math.random() * 4 + 2}px;
-                background: ${Math.random() > 0.5 ? 'rgba(0, 255, 136, 0.3)' : 'rgba(0, 212, 255, 0.3)'};
+                background: ${Math.random() > 0.5 ? 'rgba(52, 211, 153, 0.3)' : 'rgba(96, 165, 250, 0.3)'};
                 border-radius: 50%;
                 pointer-events: none;
                 left: ${Math.random() * 100}%;
@@ -497,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
         activeSectionObserver.observe(section);
     });
 
-    console.log('%c🚀 Backend Developer Portfolio', 'color: #00ff88; font-size: 20px; font-weight: bold; font-family: monospace;');
-    console.log('%cconst developer = "Eduardo Alejandro Vega Díaz";', 'color: #00d4ff; font-size: 14px; font-family: monospace;');
-    console.log('%cconsole.log("¡Gracias por visitar mi portafolio!");', 'color: #bd93f9; font-size: 14px; font-family: monospace;');
+    console.log('%c🚀 Backend Developer Portfolio', 'color: #34d399; font-size: 20px; font-weight: bold; font-family: monospace;');
+    console.log('%cconst developer = "Eduardo Alejandro Vega Díaz";', 'color: #60a5fa; font-size: 14px; font-family: monospace;');
+    console.log('%cconsole.log("¡Gracias por visitar mi portafolio!");', 'color: #a78bfa; font-size: 14px; font-family: monospace;');
 });
