@@ -5,25 +5,50 @@ Portafolio personal con estética de editor de código / terminal, diseñado par
 ## Características
 
 - **Diseño tipo terminal**: secciones estructuradas como bloques de código (`const sobre_mi =`, `class BackendDeveloper`), lluvia de código y fondo binario animado.
-- **Paleta moderna sobre fondo oscuro**: esmeralda, índigo y violeta pastel con brillos sutiles.
+- **Paleta moderna sobre fondo oscuro**: esmeralda, índigo y violeta pastel con brillos sutiles. Incluye **modo claro** con botón en la barra de navegación (se guarda en `localStorage`).
+- **Idioma ES/EN**: toggle que traduce navegación, títulos, secciones, formulario y proyecto (persistente).
 - **Animaciones**: efecto de escritura en el hero, glitch en el nombre, contadores animados y barras de habilidades.
-- **Secciones**:
-  - Inicio (hero con stack tecnológico)
-  - Sobre mí (panel de código + estadísticas)
-  - Habilidades (barras de progreso por categoría)
-  - Proyectos (tarjetas con snippets de código reales)
-  - Contacto (datos de contacto + formulario)
-- **Responsive**: adaptado a tablet y móvil con menú hamburguesa.
-- **Extras**: copiar código al portapapeles con un clic, notificaciones y navegación activa según la sección visible.
+- **Loader de arranque** estilo terminal al abrir la página.
+- **Widget de GitHub en vivo**: número de repos públicos, seguidores y gists vía GitHub API.
+- **Modal de detalle de proyectos**: al hacer clic en una tarjeta muestra descripción, arquitectura (monorepo) y stack completo.
+- **Filtros de proyectos** por categoría (Full-stack / Frontend / Backend).
+- **Badge de estado** ("Disponible para proyectos") y **botón de descarga de CV**.
+- **Sección Experiencia**: timeline + soft skills.
+- **Accesibilidad**: menú hamburguesa con `aria-expanded`, `aria-current` en la navegación activa y teclado para abrir modales.
+
+## Secciones
+
+- Inicio (hero con stack tecnológico, estado y CV)
+- Sobre mí (panel de código + estadísticas + widget GitHub)
+- Habilidades (barras de progreso por categoría)
+- Experiencia (timeline + soft skills)
+- Proyectos (tarjetas con snippets reales, filtros y modal de detalle)
+- Contacto (datos de contacto + formulario conectado a backend)
+
+## Formulario de contacto (backend)
+
+El formulario envía el mensaje a una API real de Node.js/Express que lo reenvía por email con Nodemailer.
+
+```bash
+cd server
+npm install
+cp .env.example .env   # configura tu email SMTP (Gmail con contraseña de aplicación)
+npm start              # sirve el portafolio + la API en http://localhost:3000
+```
+
+- `POST /api/contact` — recibe `{ name, email, message }`, valida, limita por IP y envía el email a `alejandrovega.1593@gmail.com`.
+- `GET /api/health` — healthcheck.
+- Sin SMTP configurado, la API responde `503` y el formulario muestra el error en pantalla.
 
 ## Tecnologías
 
 | Área | Tecnología |
 |---|---|
 | Estructura | HTML5 |
-| Estilos | CSS3 (Grid, Flexbox, animaciones, variables CSS) |
+| Estilos | CSS3 (Grid, Flexbox, animaciones, variables CSS, tema claro) |
 | Lógica | JavaScript vanilla (ES6+) |
 | Tipografías | Fira Code, Orbitron (Google Fonts) |
+| Backend de contacto | Node.js, Express, Nodemailer, Helmet, CORS, rate-limit |
 
 ## Estructura del proyecto
 
@@ -31,16 +56,25 @@ Portafolio personal con estética de editor de código / terminal, diseñado par
 portafolio/
 ├── index.html           # Página principal
 ├── styles_backend.css   # Estilos y tema visual
-└── script_backend.js    # Animaciones e interacciones
+├── script_backend.js    # Animaciones e interacciones
+├── assets/
+│   └── CV_Eduard_Vega.pdf  # Currículum descargable
+└── server/              # API de contacto (Node.js + Express)
+    ├── server.js
+    ├── package.json
+    └── .env.example
 ```
 
 ## Cómo verlo
 
-No requiere instalación ni build.
+No requiere instalación ni build para la parte estática.
 
 **Opción 1 — Abrir directamente:**
 
 `index.html`.
 
+**Opción 2 — Con envío de mensajes funcional:**
+
+Levanta el servidor (ver sección de formulario) y abre `http://localhost:3000`.
 
 © 2026 Eduard Alejandro Vega Díaz

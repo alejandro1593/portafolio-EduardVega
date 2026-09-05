@@ -17,11 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        this.classList.toggle('active');
+        const isOpen = navMenu.classList.toggle('active');
+        this.classList.toggle('active', isOpen);
+        this.setAttribute('aria-expanded', isOpen);
+        this.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
         
         const spans = this.querySelectorAll('span');
-        if (this.classList.contains('active')) {
+        if (isOpen) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
@@ -37,14 +39,11 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             navMenu.classList.remove('active');
             menuToggle.classList.remove('active');
-            
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Abrir menú');
 
             const headerOffset = 80;
             const elementPosition = targetSection.getBoundingClientRect().top;
@@ -186,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statObserver.observe(card);
     });
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const formData = new FormData(this);
@@ -204,8 +203,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        showNotification('¡Mensaje enviado con éxito! Te responderé pronto.', 'success');
-        this.reset();
+        const submitBtn = this.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="btn-text">Enviando...</span>';
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Error al enviar el mensaje');
+            }
+
+            showNotification(data.message || '¡Mensaje enviado con éxito! Te responderé pronto.', 'success');
+            this.reset();
+        } catch (err) {
+            showNotification(err.message || 'No se pudo enviar el mensaje. Intenta de nuevo.', 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
     });
 
     function isValidEmail(email) {
@@ -448,8 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const id = entry.target.getAttribute('id');
                 navLinks.forEach(link => {
                     link.classList.remove('active');
+                    link.removeAttribute('aria-current');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
+                        link.setAttribute('aria-current', 'true');
                     }
                 });
             }
@@ -458,6 +483,353 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('section').forEach(section => {
         activeSectionObserver.observe(section);
+    });
+
+    const bootLoader = document.getElementById('bootLoader');
+    if (bootLoader) {
+        bootLoader.querySelectorAll('.boot-line').forEach((line, i) => {
+            line.style.animationDelay = `${0.5 + i * 0.4}s`;
+        });
+        setTimeout(() => {
+            bootLoader.classList.add('boot-hide');
+            setTimeout(() => bootLoader.remove(), 900);
+        }, 2900);
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const iconCore = themeToggle.querySelector('.theme-icon');
+        iconCore.textContent = theme === 'light' ? '☀️' : '🌙';
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute('content', theme === 'light' ? '#f0f4f8' : '#0a0e27');
+        localStorage.setItem('theme', theme);
+    }
+    setTheme(localStorage.getItem('theme') || 'dark');
+    themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    const I18N = {
+        es: {
+            'nav-inicio': '<span class="code-keyword">const</span> <span class="code-var">inicio</span>',
+            'nav-sobre': '<span class="code-keyword">const</span> <span class="code-var">sobre_mi</span>',
+            'nav-habilidades': '<span class="code-keyword">const</span> <span class="code-var">habilidades</span>',
+            'nav-experiencia': '<span class="code-keyword">const</span> <span class="code-var">experiencia</span>',
+            'nav-proyectos': '<span class="code-keyword">const</span> <span class="code-var">proyectos</span>',
+            'nav-contacto': '<span class="code-keyword">const</span> <span class="code-var">contacto</span>',
+            'hero-status': 'Disponible para proyectos',
+            'btn-proyectos': '<span class="btn-code">&lt;</span><span class="btn-text">Ver Proyectos</span><span class="btn-code">/&gt;</span>',
+            'btn-contacto': '<span class="btn-code">&lt;</span><span class="btn-text">Contactar</span><span class="btn-code">/&gt;</span>',
+            'btn-cv': '<span class="btn-code">&lt;</span><span class="btn-text">Descargar CV</span><span class="btn-code">/&gt;</span>',
+            'sobre-comment': '// Sobre mí',
+            'sobre-title': 'sobre_mi',
+            'stat-anios': 'Años Exp.',
+            'stat-commits': 'Commits',
+            'stat-stars': 'Stars',
+            'widget-github': '<span class="code-keyword">const</span> <span class="code-var">github</span> <span class="code-operator">=</span> <span class="code-string">"en vivo"</span>;',
+            'habilidades-comment': '// Habilidades',
+            'habilidades-title': 'habilidades',
+            'cat-backend': 'Backend',
+            'cat-bd': 'Bases de Datos',
+            'cat-devops': 'DevOps',
+            'cat-herramientas': 'Herramientas',
+            'experiencia-comment': '// Experiencia',
+            'experiencia-title': 'experiencia',
+            'tl-1-t': 'Inicio en la programación',
+            'tl-1-d': 'Primeros proyectos con HTML, CSS y JavaScript; desarrollo de la lógica base y algoritmos.',
+            'tl-2-t': 'Especialización Backend',
+            'tl-2-d': 'Construcción de APIs REST con Node.js, Express, autenticación JWT y bases de datos SQL/NoSQL.',
+            'tl-3-t': 'Arquitectura y DevOps',
+            'tl-3-d': 'Docker, CI/CD, microservicios y patrones de arquitectura "package by feature".',
+            'tl-4-t': 'Proyectos full-stack',
+            'tl-4-d': 'Monorepos e-commerce, clones de plataformas de streaming y servicios con integraciones externas (Stripe, Spotify API).',
+            'soft-title': '// soft_skills',
+            'soft-1': 'Trabajo en equipo',
+            'soft-2': 'Comunicación clara',
+            'soft-3': 'Resolución de problemas',
+            'soft-4': 'Aprendizaje continuo',
+            'soft-5': 'Orientación a resultados',
+            'soft-6': 'Autonomía y gestión del tiempo',
+            'proyectos-comment': '// Proyectos',
+            'proyectos-title': 'proyectos',
+            'filtro-todos': 'Todos',
+            'filtro-full': 'Full-stack',
+            'filtro-front': 'Frontend',
+            'filtro-back': 'Backend',
+            'contacto-comment': '// Contacto',
+            'contacto-title': 'contacto',
+            'ct-email': 'Email',
+            'ct-github': 'GitHub',
+            'ct-linkedin': 'LinkedIn',
+            'ct-ubicacion': 'Ubicación',
+            'form-nombre': '<span class="code-keyword">const</span> <span class="code-var">nombre</span> <span class="code-operator">=</span>',
+            'form-email': '<span class="code-keyword">const</span> <span class="code-var">email</span> <span class="code-operator">=</span>',
+            'form-mensaje': '<span class="code-keyword">const</span> <span class="code-var">mensaje</span> <span class="code-operator">=</span>',
+            'form-enviar': '<span class="btn-code">&lt;</span><span class="btn-text">Enviar Mensaje</span><span class="btn-code">/&gt;</span>',
+            'modal-arq': '// arquitectura',
+            'modal-stack': '// stack',
+            'modal-repo': 'Ver Repositorio',
+            'github-repos': 'Repos públicos',
+            'github-followers': 'Seguidores',
+            'github-gists': 'Gists',
+            'github-unavailable': 'GitHub API no disponible'
+        },
+        en: {
+            'nav-inicio': '<span class="code-keyword">const</span> <span class="code-var">home</span>',
+            'nav-sobre': '<span class="code-keyword">const</span> <span class="code-var">about_me</span>',
+            'nav-habilidades': '<span class="code-keyword">const</span> <span class="code-var">skills</span>',
+            'nav-experiencia': '<span class="code-keyword">const</span> <span class="code-var">experience</span>',
+            'nav-proyectos': '<span class="code-keyword">const</span> <span class="code-var">projects</span>',
+            'nav-contacto': '<span class="code-keyword">const</span> <span class="code-var">contact</span>',
+            'hero-status': 'Available for projects',
+            'btn-proyectos': '<span class="btn-code">&lt;</span><span class="btn-text">View Projects</span><span class="btn-code">/&gt;</span>',
+            'btn-contacto': '<span class="btn-code">&lt;</span><span class="btn-text">Contact</span><span class="btn-code">/&gt;</span>',
+            'btn-cv': '<span class="btn-code">&lt;</span><span class="btn-text">Download CV</span><span class="btn-code">/&gt;</span>',
+            'sobre-comment': '// About me',
+            'sobre-title': 'about_me',
+            'stat-anios': 'Years Exp.',
+            'stat-commits': 'Commits',
+            'stat-stars': 'Stars',
+            'widget-github': '<span class="code-keyword">const</span> <span class="code-var">github</span> <span class="code-operator">=</span> <span class="code-string">"live"</span>;',
+            'habilidades-comment': '// Skills',
+            'habilidades-title': 'skills',
+            'cat-backend': 'Backend',
+            'cat-bd': 'Databases',
+            'cat-devops': 'DevOps',
+            'cat-herramientas': 'Tools',
+            'experiencia-comment': '// Experience',
+            'experiencia-title': 'experience',
+            'tl-1-t': 'Coding beginnings',
+            'tl-1-d': 'First projects with HTML, CSS and JavaScript; core logic and algorithms.',
+            'tl-2-t': 'Backend specialization',
+            'tl-2-d': 'REST APIs with Node.js, Express, JWT auth and SQL/NoSQL databases.',
+            'tl-3-t': 'Architecture & DevOps',
+            'tl-3-d': 'Docker, CI/CD, microservices and "package by feature" architecture patterns.',
+            'tl-4-t': 'Full-stack projects',
+            'tl-4-d': 'E-commerce monorepos, streaming clones and services with external integrations (Stripe, Spotify API).',
+            'soft-title': '// soft_skills',
+            'soft-1': 'Teamwork',
+            'soft-2': 'Clear communication',
+            'soft-3': 'Problem solving',
+            'soft-4': 'Continuous learning',
+            'soft-5': 'Results oriented',
+            'soft-6': 'Autonomy and time management',
+            'proyectos-comment': '// Projects',
+            'proyectos-title': 'projects',
+            'filtro-todos': 'All',
+            'filtro-full': 'Full-stack',
+            'filtro-front': 'Frontend',
+            'filtro-back': 'Backend',
+            'contacto-comment': '// Contact',
+            'contacto-title': 'contact',
+            'ct-email': 'Email',
+            'ct-github': 'GitHub',
+            'ct-linkedin': 'LinkedIn',
+            'ct-ubicacion': 'Location',
+            'form-nombre': '<span class="code-keyword">const</span> <span class="code-var">name</span> <span class="code-operator">=</span>',
+            'form-email': '<span class="code-keyword">const</span> <span class="code-var">email</span> <span class="code-operator">=</span>',
+            'form-mensaje': '<span class="code-keyword">const</span> <span class="code-var">message</span> <span class="code-operator">=</span>',
+            'form-enviar': '<span class="btn-code">&lt;</span><span class="btn-text">Send Message</span><span class="btn-code">/&gt;</span>',
+            'modal-arq': '// architecture',
+            'modal-stack': '// stack',
+            'modal-repo': 'View Repository',
+            'github-repos': 'Public repos',
+            'github-followers': 'Followers',
+            'github-gists': 'Gists',
+            'github-unavailable': 'GitHub API unavailable'
+        },
+        ph: {
+            es: { 'ph-nombre': '"Tu nombre"', 'ph-email': '"tu@gmail.com"', 'ph-mensaje': '"Tu mensaje..."' },
+            en: { 'ph-nombre': '"Your name"', 'ph-email': '"you@gmail.com"', 'ph-mensaje': '"Your message..."' }
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'es';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+        const dict = lang === 'en' ? I18N.en : I18N.es;
+        const placeholders = lang === 'en' ? I18N.ph.en : I18N.ph.es;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (placeholders[key] !== undefined) el.setAttribute('placeholder', placeholders[key]);
+        });
+
+        const langBtn = document.getElementById('langToggle');
+        if (langBtn) {
+            const text = langBtn.querySelector('.lang-text');
+            if (text) text.textContent = lang === 'en' ? 'ES' : 'EN';
+        }
+
+        localStorage.setItem('lang', lang);
+    }
+
+    const langToggleBtn = document.getElementById('langToggle');
+    langToggleBtn.addEventListener('click', () => {
+        setLanguage(currentLang === 'es' ? 'en' : 'es');
+        renderGitHubWidget();
+        openProjectModal(openModalKey, true);
+    });
+
+    const GITHUB_USER = 'alejandro1593';
+    const githubWidgetBody = document.getElementById('githubWidgetBody');
+
+    function renderGitHubWidget() {
+        if (!githubWidgetBody) return;
+        if (!window.__githubData) return;
+        const dict = currentLang === 'en' ? I18N.en : I18N.es;
+        const data = window.__githubData;
+        githubWidgetBody.innerHTML = `
+            <div class="github-stat"><span class="github-stat-value">${data.public_repos}</span><span class="github-stat-label">${dict['github-repos']}</span></div>
+            <div class="github-stat"><span class="github-stat-value">${data.followers}</span><span class="github-stat-label">${dict['github-followers']}</span></div>
+            <div class="github-stat"><span class="github-stat-value">${data.public_gists}</span><span class="github-stat-label">${dict['github-gists']}</span></div>`;
+    }
+
+    fetch(`https://api.github.com/users/${GITHUB_USER}`)
+        .then(res => (res.ok ? res.json() : Promise.reject(new Error('GitHub API error'))))
+        .then(data => {
+            window.__githubData = data;
+            renderGitHubWidget();
+        })
+        .catch(() => {
+            if (githubWidgetBody) {
+                githubWidgetBody.innerHTML = `<span class="github-unavailable">${currentLang === 'en' ? I18N.en['github-unavailable'] : I18N.es['github-unavailable']}</span>`;
+            }
+        });
+
+    setLanguage(currentLang);
+
+    const projectDetails = {
+        ecommerce: {
+            icon: '🛒',
+            title: 'E-commerce',
+            description: {
+                es: 'E-commerce full-stack con arquitectura monorepo (backend/, frontend/ y nginx/): catálogo de productos, carrito de compras, pedidos y pagos con Stripe.',
+                en: 'Full-stack e-commerce with monorepo architecture (backend/, frontend/ and nginx/): product catalog, shopping cart, orders and Stripe payments.'
+            },
+            arch: {
+                es: 'const ecommerce = {\n  estructura: "monorepo",\n  carpetas: ["backend/", "frontend/", "nginx/"],\n  api: "REST",\n  pagos: "Stripe SDK",\n  proxy: "Nginx (SPA + /api/)"\n};',
+                en: 'const ecommerce = {\n  structure: "monorepo",\n  folders: ["backend/", "frontend/", "nginx/"],\n  api: "REST",\n  payments: "Stripe SDK",\n  proxy: "Nginx (SPA + /api/)"\n};'
+            },
+            stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'React Router 7', 'TanStack Query', 'Zustand', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'JWT', 'Stripe', 'Docker', 'Nginx'],
+            repo: 'https://github.com/alejandro1593/E-commerce'
+        },
+        audioly: {
+            icon: '🎵',
+            title: 'Audioly',
+            description: {
+                es: 'Clon de Spotify: reproducción de música y gestión de listas de reproducción, con integraciones de Spotify API, Jamendo y SoundHelix (backend/services/).',
+                en: 'Spotify clone: music playback and playlist management, integrating the Spotify API, Jamendo and SoundHelix (backend/services/).'
+            },
+            arch: {
+                es: 'const audioly = {\n  tipo: "clon de Spotify",\n  backend: "Node.js + Express",\n  orm: "Sequelize (PostgreSQL 15)",\n  frontend: "Next.js 14",\n  servicios: ["Spotify", "Jamendo", "SoundHelix"]\n};',
+                en: 'const audioly = {\n  type: "Spotify clone",\n  backend: "Node.js + Express",\n  orm: "Sequelize (PostgreSQL 15)",\n  frontend: "Next.js 14",\n  services: ["Spotify", "Jamendo", "SoundHelix"]\n};'
+            },
+            stack: ['Next.js', 'React 18', 'Tailwind CSS', 'Node.js', 'Express', 'Sequelize', 'PostgreSQL', 'JWT', 'Zustand', 'Docker'],
+            repo: 'https://github.com/alejandro1593/Audioly'
+        },
+        portfolio: {
+            icon: '👨‍💻',
+            title: 'Portafolio EduardVega',
+            description: {
+                es: 'Portafolio personal con estética de editor de código, construido sin frameworks ni dependencias externas con HTML5, CSS3 y JavaScript vanilla (ES6+).',
+                en: 'Personal portfolio with a code-editor aesthetic, built with no frameworks or external dependencies: HTML5, CSS3 and vanilla JavaScript (ES6+).'
+            },
+            arch: {
+                es: 'const portafolio = {\n  estetica: "editor de código",\n  deps: 0,\n  estructura: ["index.html", "styles_backend.css", "script_backend.js"],\n  responsive: true\n};',
+                en: 'const portfolio = {\n  aesthetic: "code editor",\n  deps: 0,\n  structure: ["index.html", "styles_backend.css", "script_backend.js"],\n  responsive: true\n};'
+            },
+            stack: ['HTML5', 'CSS3', 'JavaScript', 'ES6+', 'Grid/Flexbox', 'Google Fonts'],
+            repo: 'https://github.com/alejandro1593/portafolio-EduardVega'
+        }
+    };
+
+    const modal = document.getElementById('projectModal');
+    let openModalKey = null;
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        const openCard = () => openProjectModal(card.dataset.project);
+
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.project-code')) return;
+            openCard();
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openCard();
+            }
+        });
+    });
+
+    function openProjectModal(key, silent) {
+        const detail = projectDetails[key];
+        if (!detail) return;
+
+        openModalKey = key;
+        const dict = currentLang === 'en' ? I18N.en : I18N.es;
+
+        document.getElementById('modalIcon').textContent = detail.icon;
+        document.getElementById('projectModalTitle').textContent = detail.title;
+        document.getElementById('modalDescription').textContent = detail.description[currentLang === 'en' ? 'en' : 'es'];
+        document.getElementById('modalArch').innerHTML = escapeHtml(detail.arch[currentLang === 'en' ? 'en' : 'es']);
+        document.getElementById('modalRepo').href = detail.repo;
+
+        document.getElementById('modalTags').innerHTML = detail.stack
+            .map(t => `<span class="tech-tag">${t}</span>`)
+            .join('');
+
+        document.getElementById('modalStack').innerHTML = detail.stack
+            .map(t => `<span class="tech-tag">${t}</span>`)
+            .join('');
+
+        if (!silent) {
+            modal.hidden = false;
+            document.body.classList.add('modal-open');
+            document.getElementById('modalClose').focus();
+        }
+    }
+
+    function escapeHtml(str) {
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    function closeProjectModal() {
+        modal.hidden = true;
+        openModalKey = null;
+        document.body.classList.remove('modal-open');
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeProjectModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeProjectModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeProjectModal();
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+            document.querySelectorAll('.project-card').forEach(card => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? '' : 'none';
+            });
+        });
     });
 
     console.log('%c🚀 Backend Developer Portfolio', 'color: #34d399; font-size: 20px; font-weight: bold; font-family: monospace;');
