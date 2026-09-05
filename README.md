@@ -36,35 +36,11 @@ portafolio/
 
 ## Cómo verlo
 
-No requiere instalación ni build. Dos opciones:
+No requiere instalación ni build.
 
 **Opción 1 — Abrir directamente:**
 
-Doble clic en `index.html`.
+`index.html`.
 
-**Opción 2 — Servidor local (recomendado):**
-
-```bash
-# Con Python
-python -m http.server 8080
-
-# Con Node.js
-npx serve .
-```
-
-Luego abre `http://localhost:8080` en tu navegador.
-
-## Personalización
-
-- **Colores**: edita las variables en `:root` al inicio de `styles_backend.css`.
-- **Proyectos**: busca la sección `<div class="projects-grid">` en `index.html`.
-- **Datos de contacto**: sección `contacto` en `index.html`.
-
-## Contacto
-
-- Email: [Alejandrovega.1593@gmail.com](mailto:Alejandrovega.1593@gmail.com)
-- GitHub: [github.com/Alejandro1593](https://github.com/Alejandro1593)
-
----
 
 © 2026 Eduard Alejandro Vega Díaz

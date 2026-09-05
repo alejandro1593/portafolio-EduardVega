@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const typingText = document.getElementById('typing');
     const phrases = [
-        '<span class="code-keyword">const</span> <span class="code-var">developer</span> <span class="code-operator">=</span> <span class="code-string">"Backend Developer"</span>;',
-        '<span class="code-keyword">const</span> <span class="code-var">stack</span> <span class="code-operator">=</span> [<span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"Docker"</span>];',
-        '<span class="code-keyword">const</span> <span class="code-var">passion</span> <span class="code-operator">=</span> <span class="code-boolean">true</span>;',
-        '<span class="code-keyword">function</span> <span class="code-func">createAmazingCode</span>() { <span class="code-keyword">return</span> <span class="code-string">"🚀"</span>; }'
+        'const developer = "Backend Developer";',
+        'const stack = ["Node.js", "Express", "Docker"];',
+        'const passion = true;',
+        'function createAmazingCode() { return "🚀"; }'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentPhrase = phrases[phraseIndex];
         
         if (isDeleting) {
-            typingText.innerHTML = currentPhrase.substring(0, charIndex - 1);
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
             typingSpeed = 30;
         } else {
-            typingText.innerHTML = currentPhrase.substring(0, charIndex + 1);
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
             typingSpeed = 50;
         }
@@ -105,7 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
-                
+
+                if (!entry.target.classList.contains('section')) return;
+
                 if (entry.target.querySelector('.skill-progress')) {
                     entry.target.querySelectorAll('.skill-progress').forEach(bar => {
                         const progress = bar.getAttribute('data-progress');
@@ -382,8 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrolled = window.pageYOffset;
         
         parallaxElements.forEach(el => {
-            const speed = el.classList.contains('hero-title') ? 0.3 : 0.1;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
+            el.style.transform = `translateY(${scrolled * 0.3}px)`;
         });
     });
 
@@ -440,24 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(particleStyle);
 
     const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerOffset = 80;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 
     const activeSectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

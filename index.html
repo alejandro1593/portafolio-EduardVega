@@ -53,7 +53,7 @@
                     <span class="cursor">|</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="glitch" data-text="Eduardo">Eduard</span>
+                    <span class="glitch" data-text="Eduard">Eduard</span>
                     <span class="glitch" data-text="Alejandro">Alejandro</span>
                     <br>
                     <span class="glitch" data-text="Vega">Vega</span>
@@ -123,7 +123,7 @@
   <span class="code-prop">nombre</span>: <span class="code-string">"Eduard Alejandro Vega Díaz"</span>,
   <span class="code-prop">rol</span>: <span class="code-string">"Backend Developer"</span>,
   <span class="code-prop">ubicacion</span>: <span class="code-string">"Venezuela"</span>,
-  <span class="code-prop">experiencia</span>: <span class="code-number">2</span>,
+  <span class="code-prop">experiencia</span>: <span class="code-number">5</span>,
   <span class="code-prop">descripcion</span>: <span class="code-string">`Desarrollador backend
   apasionado por crear APIs robustas
   y escalables. Especialista en
@@ -344,7 +344,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>   
             </div>
         </div>
     </section>
@@ -361,7 +361,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-header">
-                        <div class="project-icon">🚀</div>
+                        <div class="project-icon">🛒</div>
                         <div class="project-dots">
                             <span class="dot red"></span>
                             <span class="dot yellow"></span>
@@ -369,31 +369,29 @@
                         </div>
                     </div>
                     <div class="project-body">
-                        <pre class="project-code"><span class="code-keyword">class</span> <span class="code-class">EcommerceAPI</span> {
-  <span class="code-keyword">constructor</span>() {
-    <span class="code-keyword">this</span>.<span class="code-prop">stack</span> <span class="code-operator">=</span> [
-      <span class="code-string">"Node.js"</span>,
-      <span class="code-string">"Express"</span>,
-      <span class="code-string">"PostgreSQL"</span>,
-      <span class="code-string">"Redis"</span>,
-      <span class="code-string">"Docker"</span>
-    ];
-  }
-}</pre>
-                        <h3 class="project-title">E-commerce API</h3>
-                        <p class="project-description">API REST completa para plataforma de e-commerce con autenticación JWT, pagos integrados y gestión de inventario en tiempo real.</p>
+                        <pre class="project-code"><span class="code-keyword">const</span> <span class="code-var">monorepo</span> <span class="code-operator">=</span> {
+  <span class="code-prop">frontend</span>: [<span class="code-string">"React 19"</span>, <span class="code-string">"Vite"</span>, <span class="code-string">"Tailwind"</span>],
+  <span class="code-prop">backend</span>: [<span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"Prisma"</span>],
+  <span class="code-prop">infra</span>: [<span class="code-string">"PostgreSQL"</span>, <span class="code-string">"Docker"</span>, <span class="code-string">"Nginx"</span>]
+};</pre>
+                        <h3 class="project-title">E-commerce</h3>
+                        <p class="project-description">E-commerce full-stack con arquitectura monorepo (backend/, frontend/ y nginx/), catálogo de productos, carrito de compras, pedidos y pagos con Stripe.</p>
                         <div class="project-tech">
+                            <span class="tech-tag">React 19</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Tailwind CSS</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Prisma</span>
                             <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">Stripe</span>
                             <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Nginx</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
-                            </a>
-                            <a href="#" class="project-link">
+                            <a href="https://github.com/alejandro1593/E-commerce" target="_blank" rel="noopener noreferrer" class="project-link">
                                 <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
                             </a>
                         </div>
@@ -402,7 +400,7 @@
 
                 <div class="project-card">
                     <div class="project-header">
-                        <div class="project-icon">📊</div>
+                        <div class="project-icon">🎵</div>
                         <div class="project-dots">
                             <span class="dot red"></span>
                             <span class="dot yellow"></span>
@@ -410,59 +408,58 @@
                         </div>
                     </div>
                     <div class="project-body">
-                        <pre class="project-code"><span class="code-keyword">const</span> <span class="code-var">analytics</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-class">RealTimeAnalytics</span>();
-analytics.<span class="code-method">connect</span>({
-  <span class="code-prop">database</span>: <span class="code-string">"MongoDB"</span>,
-  <span class="code-prop">streaming</span>: <span class="code-string">"WebSockets"</span>
-});</pre>
-                        <h3 class="project-title">Analytics Dashboard</h3>
-                        <p class="project-description">Sistema de análisis en tiempo real con WebSocket para visualización de datos y generación de reportes automáticos.</p>
+                        <pre class="project-code"><span class="code-keyword">const</span> <span class="code-var">spotifyClone</span> <span class="code-operator">=</span> {
+  <span class="code-prop">backend</span>: [<span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"Sequelize"</span>],
+  <span class="code-prop">frontend</span>: [<span class="code-string">"Next.js"</span>, <span class="code-string">"React 18"</span>, <span class="code-string">"Tailwind"</span>]
+};</pre>
+                        <h3 class="project-title">Audioly</h3>
+                        <p class="project-description">Clon de Spotify: reproducción de música y gestión de listas de reproducción, con integraciones de Spotify API, Jamendo y SoundHelix (backend/services/).</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
-                            </a>
-                            <a href="#" class="project-link">
-                                <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🔐</div>
-                        <div class="project-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <pre class="project-code"><span class="code-keyword">class</span> <span class="code-class">AuthService</span> {
-  <span class="code-keyword">async</span> <span class="code-func">authenticate</span>(<span class="code-var">user</span>) {
-    <span class="code-keyword">const</span> <span class="code-var">token</span> <span class="code-operator">=</span> <span class="code-keyword">await</span> <span class="code-var">jwt</span>.<span class="code-method">sign</span>(user);
-    <span class="code-keyword">return</span> { <span class="code-prop">token</span> };
-  }
-}</pre>
-                        <h3 class="project-title">Auth Microservice</h3>
-                        <p class="project-description">Microservicio de autenticación centralizado con OAuth2, JWT, rate limiting y gestión de sesiones distribuidas.</p>
-                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React 18</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">Sequelize</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">Zustand</span>
+                            <span class="tech-tag">Docker</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <span class="code-keyword">const</span> <span class="code-var">demo</span> <span class="code-operator">=</span> <span class="code-string">"Ver Demo"</span>;
+                            <a href="https://github.com/alejandro1593/Audioly" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
                             </a>
-                            <a href="#" class="project-link">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">👨‍💻</div>
+                        <div class="project-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <pre class="project-code"><span class="code-keyword">const</span> <span class="code-var">portfolio</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-class">Portfolio</span>({
+  <span class="code-prop">stack</span>: [<span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>, <span class="code-string">"Vanilla JS"</span>],
+  <span class="code-prop">deps</span>: <span class="code-number">0</span>
+});</pre>
+                        <h3 class="project-title">Portafolio EduardVega</h3>
+                        <p class="project-description">Portafolio personal con estética de editor de código, construido sin frameworks ni dependencias externas con HTML5, CSS3 y JavaScript vanilla (ES6+).</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">ES6+</span>
+                            <span class="tech-tag">Grid/Flexbox</span>
+                            <span class="tech-tag">Google Fonts</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/alejandro1593/portafolio-EduardVega" target="_blank" rel="noopener noreferrer" class="project-link">
                                 <span class="code-keyword">const</span> <span class="code-var">repo</span> <span class="code-operator">=</span> <span class="code-string">"GitHub"</span>;
                             </a>
                         </div>
@@ -496,9 +493,9 @@ analytics.<span class="code-method">connect</span>({
                                 <span class="panel-title">contact.js</span>
                             </div>
                             <pre class="code-content"><span class="code-keyword">const</span> <span class="code-var">contacto</span> <span class="code-operator">=</span> {
-  <span class="code-prop">email</span>: <span class="code-string">"Alejandrovega.1593@gmail.com"</span>,
-  <span class="code-prop">github</span>: <span class="code-string">"github.com/Alejandro1593"</span>,
-  <span class="code-prop">linkedin</span>: <span class="code-string">"linkedin.com/in/Alejadnrovega.1593@gmail.com"</span>,
+  <span class="code-prop">email</span>: <span class="code-string">"alejandrovega.1593@gmail.com"</span>,
+  <span class="code-prop">github</span>: <span class="code-string">"github.com/alejandro1593"</span>,
+  <span class="code-prop">linkedin</span>: <span class="code-string">"linkedin.com/in/alejandrovega.1593@gmail.com"</span>,
   <span class="code-prop">ubicacion</span>: <span class="code-string">"Venezuela"</span>
 };
 
@@ -509,14 +506,14 @@ analytics.<span class="code-method">connect</span>({
                     </div>
                     
                     <div class="contact-items">
-                        <a href="mailto:eduardo.vega@email.com" class="contact-item">
+                        <a href="mailto:alejandrovega.1593@gmail.com" class="contact-item">
                             <span class="contact-icon">📧</span>
                             <div class="contact-text">
                                 <span class="contact-label">Email</span>
-                                <span class="contact-value">Alejandrovega.1593@gmail.com</span>
+                                <span class="contact-value">alejandrovega.1593@gmail.com</span>
                             </div>
                         </a>
-                        <a href="#" class="contact-item">
+                        <a href="https://github.com/alejandro1593" target="_blank" rel="noopener noreferrer" class="contact-item">
                             <span class="contact-icon">🔗</span>
                             <div class="contact-text">
                                 <span class="contact-label">GitHub</span>
@@ -527,7 +524,7 @@ analytics.<span class="code-method">connect</span>({
                             <span class="contact-icon">💼</span>
                             <div class="contact-text">
                                 <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">linkedin.com/in/Alejandrovega.1593@gmail.com</span>
+                                <span class="contact-value">linkedin.com/in/alejandrovega.1593@gmail.com</span>
                             </div>
                         </a>
                         <div class="contact-item">
@@ -581,7 +578,7 @@ analytics.<span class="code-method">connect</span>({
             <pre class="footer-content">
 <span class="code-keyword">const</span> <span class="code-var">footer</span> <span class="code-operator">=</span> {
   <span class="code-prop">autor</span>: <span class="code-string">"Eduard Alejandro Vega Díaz"</span>,
-  <span class="code-prop">año</span>: <span class="code-number">2023</span>,
+  <span class="code-prop">año</span>: <span class="code-number">2026</span>,
   <span class="code-prop">derechos</span>: <span class="code-string">"© Todos los derechos reservados"</span>
 };
 

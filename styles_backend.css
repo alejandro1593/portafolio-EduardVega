@@ -1200,7 +1200,7 @@ body::before {
 }
 
 .code-class {
-    color: var(--code-tertiary);
+    color: var(--tertiary);
 }
 
 .code-func,
