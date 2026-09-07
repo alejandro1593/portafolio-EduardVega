@@ -739,6 +739,20 @@ document.addEventListener('DOMContentLoaded', function() {
             stack: ['Next.js', 'React 18', 'Tailwind CSS', 'Node.js', 'Express', 'Sequelize', 'PostgreSQL', 'JWT', 'Zustand', 'Docker'],
             repo: 'https://github.com/alejandro1593/Audioly'
         },
+        urlshortener: {
+            icon: '🔗',
+            title: 'URL Shortener API',
+            description: {
+                es: 'Acortador de URLs full-stack: API REST en TypeScript con Express, PostgreSQL 16 y Redis 7 (cache), autenticación JWT + bcrypt con refresh token, CRUD de URLs con códigos personalizados y expiración, analytics de clicks, rate limiting y documentación Swagger (backend/ + frontend/).',
+                en: 'Full-stack URL shortener: TypeScript REST API with Express, PostgreSQL 16 and Redis 7 (cache), JWT + bcrypt auth with refresh tokens, URL CRUD with custom codes and expiration, click analytics, rate limiting and Swagger docs (backend/ + frontend/).'
+            },
+            arch: {
+                es: 'const urlShortener = {\n  backend: "Node.js + Express + TypeScript",\n  db: ["PostgreSQL 16", "Redis 7 (cache)"],\n  auth: "JWT + bcrypt + refresh token",\n  validacion: "Zod",\n  docs: "Swagger (/api-docs)",\n  tests: "Jest + Supertest (33)",\n  frontend: "HTML + CSS + JS vanilla"\n};',
+                en: 'const urlShortener = {\n  backend: "Node.js + Express + TypeScript",\n  db: ["PostgreSQL 16", "Redis 7 (cache)"],\n  auth: "JWT + bcrypt + refresh token",\n  validation: "Zod",\n  docs: "Swagger (/api-docs)",\n  tests: "Jest + Supertest (33)",\n  frontend: "HTML + CSS + vanilla JS"\n};'
+            },
+            stack: ['Node.js', 'Express', 'TypeScript', 'PostgreSQL', 'Redis', 'JWT', 'bcrypt', 'Zod', 'Swagger', 'Jest', 'Supertest', 'Docker', 'HTML5', 'CSS3', 'JavaScript'],
+            repo: 'https://github.com/alejandro1593/Proyecto-URL-Shortener-API'
+        },
         portfolio: {
             icon: '👨‍💻',
             title: 'Portafolio EduardVega',
