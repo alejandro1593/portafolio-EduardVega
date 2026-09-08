@@ -208,6 +208,19 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="btn-text">Enviando...</span>';
 
+        // En GitHub Pages no hay backend: redirige a mailto con el mensaje precargado
+        const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        if (!isLocal) {
+            const subject = encodeURIComponent(`[Portafolio] Mensaje de ${name}`);
+            const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+            const mailto = `mailto:alejandrovega.1593@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = mailto;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            showNotification('Abriendo tu cliente de correo para enviar el mensaje...', 'success');
+            return;
+        }
+
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
