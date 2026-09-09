@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function animateCounter(element, target) {
+        window.__countersAnimated = true;
         let current = 0;
         const increment = target / 50;
         const duration = 2000;
@@ -711,17 +712,59 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="github-stat"><span class="github-stat-value">${data.public_gists}</span><span class="github-stat-label">${dict['github-gists']}</span></div>`;
     }
 
-    fetch(`https://api.github.com/users/${GITHUB_USER}`)
-        .then(res => (res.ok ? res.json() : Promise.reject(new Error('GitHub API error'))))
-        .then(data => {
-            window.__githubData = data;
-            renderGitHubWidget();
-        })
-        .catch(() => {
-            if (githubWidgetBody) {
-                githubWidgetBody.innerHTML = `<span class="github-unavailable">${currentLang === 'en' ? I18N.en['github-unavailable'] : I18N.es['github-unavailable']}</span>`;
+    function totalCommitsFromLink(linkHeader) {
+        const match = linkHeader && linkHeader.match(/[?&]page=(\d+)>\s*;\s*rel="last"/);
+        return match ? parseInt(match[1], 10) : null;
+    }
+
+    function applyGitHubCounters(projects, commits, stars) {
+        const values = [projects, null, commits, stars];
+        document.querySelectorAll('.about-stats .stat-card').forEach((card, index) => {
+            const value = values[index];
+            if (value === null || value === undefined) return;
+            const counter = card.querySelector('.counter');
+            if (counter) {
+                counter.dataset.target = value;
+                if (window.__countersAnimated) counter.textContent = value;
             }
+            const codeNum = card.querySelector('.code-number');
+            if (codeNum) codeNum.textContent = value;
         });
+    }
+
+    function loadGitHubStats() {
+        Promise.all([
+            fetch(`https://api.github.com/users/${GITHUB_USER}`).then(res => (res.ok ? res.json() : Promise.reject(new Error('GitHub user API error')))),
+            fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&type=owner`).then(res => (res.ok ? res.json() : Promise.reject(new Error('GitHub repos API error'))))
+        ])
+            .then(([user, repos]) => {
+                window.__githubData = user;
+                renderGitHubWidget();
+                const repoList = Array.isArray(repos) ? repos : [];
+                const stars = repoList.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+
+                return Promise.all(repoList.map(repo =>
+                    fetch(`https://api.github.com/repos/${GITHUB_USER}/${repo.name}/commits?per_page=1`)
+                        .then(res => {
+                            if (res.status === 404 || res.status === 409 || res.status === 422) return 0;
+                            if (!res.ok) return 0;
+                            const last = totalCommitsFromLink(res.headers.get('Link'));
+                            return last !== null ? last : 1;
+                        })
+                        .catch(() => 0)
+                )).then(commitCounts => {
+                    const commits = commitCounts.reduce((a, b) => a + b, 0);
+                    applyGitHubCounters(repoList.length, commits, stars);
+                });
+            })
+            .catch(() => {
+                if (githubWidgetBody) {
+                    githubWidgetBody.innerHTML = `<span class="github-unavailable">${currentLang === 'en' ? I18N.en['github-unavailable'] : I18N.es['github-unavailable']}</span>`;
+                }
+            });
+    }
+
+    loadGitHubStats();
 
     setLanguage(currentLang);
 

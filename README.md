@@ -9,7 +9,7 @@ Portafolio personal con estética de editor de código / terminal, diseñado par
 - **Idioma ES/EN**: toggle que traduce navegación, títulos, secciones, formulario y proyecto (persistente).
 - **Animaciones**: efecto de escritura en el hero, glitch en el nombre, contadores animados y barras de habilidades.
 - **Loader de arranque** estilo terminal al abrir la página.
-- **Widget de GitHub en vivo**: número de repos públicos, seguidores y gists vía GitHub API.
+- **Estadísticas y widget de GitHub en vivo**: contadores de proyectos, commits y stars + repos, seguidores y gists actualizados automáticamente vía GitHub API (con respaldo estático si la API no responde).
 - **Modal de detalle de proyectos**: al hacer clic en una tarjeta muestra descripción, arquitectura (monorepo) y stack completo.
 - **Filtros de proyectos** por categoría (Full-stack / Frontend / Backend).
 - **Badge de estado** ("Disponible para proyectos") y **botón de descarga de CV**.
