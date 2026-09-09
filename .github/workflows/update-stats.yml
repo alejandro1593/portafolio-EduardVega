@@ -1,0 +1,36 @@
+name: Actualizar estadisticas de GitHub
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Calcular estadisticas
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/update-stats.js
+
+      - name: Commit y push
+        run: |
+          git add stats.json
+          if git diff --cached --quiet; then
+            echo "stats.json sin cambios"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: actualizar estadisticas de GitHub"
+            git push
+          fi
