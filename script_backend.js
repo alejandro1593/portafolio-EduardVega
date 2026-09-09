@@ -585,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'modal-arq': '// arquitectura',
             'modal-stack': '// stack',
             'modal-repo': 'Ver Repositorio',
+            'modal-demo': 'Demo en Vivo',
             'github-repos': 'Repos públicos',
             'github-followers': 'Seguidores',
             'github-gists': 'Gists',
@@ -650,6 +651,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'modal-arq': '// architecture',
             'modal-stack': '// stack',
             'modal-repo': 'View Repository',
+            'modal-demo': 'Live Demo',
             'github-repos': 'Public repos',
             'github-followers': 'Followers',
             'github-gists': 'Gists',
@@ -764,7 +766,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 en: 'const urlShortener = {\n  backend: "Node.js + Express + TypeScript",\n  db: ["PostgreSQL 16", "Redis 7 (cache)"],\n  auth: "JWT + bcrypt + refresh token",\n  validation: "Zod",\n  docs: "Swagger (/api-docs)",\n  tests: "Jest + Supertest (33)",\n  frontend: "HTML + CSS + vanilla JS"\n};'
             },
             stack: ['Node.js', 'Express', 'TypeScript', 'PostgreSQL', 'Redis', 'JWT', 'bcrypt', 'Zod', 'Swagger', 'Jest', 'Supertest', 'Docker', 'HTML5', 'CSS3', 'JavaScript'],
-            repo: 'https://github.com/alejandro1593/Proyecto-URL-Shortener-API'
+            repo: 'https://github.com/alejandro1593/Proyecto-URL-Shortener-API',
+            demoUrl: 'https://proyecto-url-shortener-api.onrender.com'
         },
         portfolio: {
             icon: '👨‍💻',
@@ -813,6 +816,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modalDescription').textContent = detail.description[currentLang === 'en' ? 'en' : 'es'];
         document.getElementById('modalArch').innerHTML = escapeHtml(detail.arch[currentLang === 'en' ? 'en' : 'es']);
         document.getElementById('modalRepo').href = detail.repo;
+
+        const demoLink = document.getElementById('modalDemo');
+        if (detail.demoUrl) {
+            demoLink.href = detail.demoUrl;
+            demoLink.hidden = false;
+        } else {
+            demoLink.hidden = true;
+        }
 
         document.getElementById('modalTags').innerHTML = detail.stack
             .map(t => `<span class="tech-tag">${t}</span>`)

@@ -1764,6 +1764,10 @@ body::before {
 .modal-footer {
     padding: 16px 24px 24px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .modal-repo {
