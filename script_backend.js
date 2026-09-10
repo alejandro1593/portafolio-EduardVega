@@ -817,7 +817,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 en: 'const audioly = {\n  type: "Spotify clone",\n  backend: "Node.js + Express",\n  orm: "Sequelize (PostgreSQL 15)",\n  frontend: "Next.js 14",\n  services: ["Spotify", "Jamendo", "SoundHelix"]\n};'
             },
             stack: ['Next.js', 'React 18', 'Tailwind CSS', 'Node.js', 'Express', 'Sequelize', 'PostgreSQL', 'JWT', 'Zustand', 'Docker'],
-            repo: 'https://github.com/alejandro1593/Audioly'
+            repo: 'https://github.com/alejandro1593/Audioly',
+            demoUrl: 'https://audioly-89gd.onrender.com'
         },
         urlshortener: {
             icon: '🔗',
