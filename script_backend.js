@@ -802,7 +802,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 en: 'const ecommerce = {\n  structure: "monorepo",\n  folders: ["backend/", "frontend/", "nginx/"],\n  api: "REST",\n  payments: "Stripe SDK",\n  proxy: "Nginx (SPA + /api/)"\n};'
             },
             stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'React Router 7', 'TanStack Query', 'Zustand', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'JWT', 'Stripe', 'Docker', 'Nginx'],
-            repo: 'https://github.com/alejandro1593/E-commerce'
+            repo: 'https://github.com/alejandro1593/E-commerce',
+            demoUrl: 'https://e-commerce-qije.onrender.com'
         },
         audioly: {
             icon: '🎵',
