@@ -886,6 +886,7 @@ document.addEventListener('DOMContentLoaded', function() {
             demoLink.href = detail.demoUrl;
             demoLink.hidden = false;
         } else {
+            demoLink.href = '#';
             demoLink.hidden = true;
         }
 

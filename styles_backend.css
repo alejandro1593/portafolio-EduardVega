@@ -1774,6 +1774,10 @@ body::before {
     justify-content: center;
 }
 
+.modal-demo[hidden] {
+    display: none;
+}
+
 body.modal-open {
     overflow: hidden;
 }
