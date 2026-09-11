@@ -1552,6 +1552,22 @@ body::before {
     border-color: rgba(52, 211, 153, 0.4);
 }
 
+.timeline-next .timeline-content {
+    border: 1px dashed rgba(52, 211, 153, 0.35);
+    opacity: 0.75;
+}
+
+.timeline-next .timeline-content:hover {
+    border-color: rgba(52, 211, 153, 0.7);
+    opacity: 1;
+}
+
+.timeline-next .timeline-dot {
+    border-style: dashed;
+    border-color: rgba(52, 211, 153, 0.6);
+    box-shadow: none;
+}
+
 .timeline-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.05rem;
