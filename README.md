@@ -58,7 +58,7 @@ portafolio/
 ├── styles_backend.css   # Estilos y tema visual
 ├── script_backend.js    # Animaciones e interacciones
 ├── assets/
-│   └── CV_Eduard_Vega.pdf  # Currículum descargable
+│   └── Resumen_Curricular_Eduard_Vega_Backend.pdf  # Currículum descargable
 └── server/              # API de contacto (Node.js + Express)
     ├── server.js
     ├── package.json
