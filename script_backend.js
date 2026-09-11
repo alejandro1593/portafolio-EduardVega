@@ -841,6 +841,21 @@ document.addEventListener('DOMContentLoaded', function() {
             repo: 'https://github.com/alejandro1593/Proyecto-URL-Shortener-API',
             demoUrl: 'https://proyecto-url-shortener-api.onrender.com'
         },
+        chat: {
+            icon: '💬',
+            title: 'Chat en Tiempo Real',
+            description: {
+                es: 'Chat full-stack con WebSockets (Socket.io): mensajería directa y grupos, presencia en línea, indicador de escritura y autenticación JWT. Frontend en React 19 + Vite y backend en Node.js/Express con PostgreSQL (Neon).',
+                en: 'Full-stack chat with WebSockets (Socket.io): direct messages and groups, online presence, typing indicator and JWT auth. React 19 + Vite frontend, Node.js/Express backend with PostgreSQL (Neon).'
+            },
+            arch: {
+                es: 'const chat = {\n  frontend: "React 19 + Vite",\n  backend: "Node.js + Express",\n  realtime: "Socket.io (WebSockets)",\n  db: "PostgreSQL (Sequelize, Neon)",\n  auth: "JWT",\n  eventos: ["message:new", "typing", "presence"]\n};',
+                en: 'const chat = {\n  frontend: "React 19 + Vite",\n  backend: "Node.js + Express",\n  realtime: "Socket.io (WebSockets)",\n  db: "PostgreSQL (Sequelize, Neon)",\n  auth: "JWT",\n  events: ["message:new", "typing", "presence"]\n};'
+            },
+            stack: ['React 19', 'Vite', 'Node.js', 'Express', 'Socket.io', 'Sequelize', 'PostgreSQL', 'Neon', 'JWT', 'WebSockets', 'Render'],
+            repo: 'https://github.com/alejandro1593/real-time-chat',
+            demoUrl: 'https://real-time-chat-frontend-tav1.onrender.com'
+        },
         portfolio: {
             icon: '👨‍💻',
             title: 'Portafolio EduardVega',
