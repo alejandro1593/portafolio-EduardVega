@@ -856,6 +856,21 @@ document.addEventListener('DOMContentLoaded', function() {
             repo: 'https://github.com/alejandro1593/real-time-chat',
             demoUrl: 'https://real-time-chat-frontend-tav1.onrender.com'
         },
+        molcorelab: {
+            icon: '🧪',
+            title: 'MolCore Lab',
+            description: {
+                es: 'Plataforma web de química experimental simulada con kernel determinista (aritmética exacta, conservación de masa y carga): balanceador estequiométrico con tutor, simulador de experimentos, tabla periódica interactiva con quiz, constructor de moléculas con vistas 3D y estructuras 2D, catálogos inorgánico/orgánico curados, calculadoras de laboratorio y auth JWT por zonas. React 19 + Vite en el frontend, FastAPI (Python 3.12) en el backend, PostgreSQL en Neon y despliegue en Render.',
+                en: 'Simulated experimental chemistry web platform with a deterministic kernel (exact arithmetic, mass & charge conservation): stoichiometric balancer with tutor, experiment simulator, interactive periodic table with quiz, molecule builder with 3D and 2D skeletal views, curated inorganic/organic catalogs, lab calculators and JWT zone auth. React 19 + Vite frontend, FastAPI (Python 3.12) backend, PostgreSQL on Neon, deployed on Render.'
+            },
+            arch: {
+                es: 'const molCoreLab = {\n  tipo: "plataforma de química simulada",\n  frontend: "React 19 + Vite",\n  backend: "FastAPI (Python 3.12)",\n  kernel: "determinista (fracciones exactas)",\n  db: "PostgreSQL (Neon)",\n  auth: "JWT + zonas",\n  deploy: "Render (web + API)"\n};',
+                en: 'const molCoreLab = {\n  type: "simulated chemistry platform",\n  frontend: "React 19 + Vite",\n  backend: "FastAPI (Python 3.12)",\n  kernel: "deterministic (exact fractions)",\n  db: "PostgreSQL (Neon)",\n  auth: "JWT + zones",\n  deploy: "Render (web + API)"\n};'
+            },
+            stack: ['React 19', 'TypeScript', 'Vite', 'FastAPI', 'Python', 'SQLAlchemy', 'PostgreSQL', 'Neon', 'JWT', 'PWA', 'Docker', 'Nginx', 'Render'],
+            repo: 'https://github.com/alejandro1593/Simulation_Laboratory',
+            demoUrl: 'https://molcore-web.onrender.com'
+        },
         portfolio: {
             icon: '👨‍💻',
             title: 'Portafolio EduardVega',
