@@ -1,5 +1,7 @@
 # Portafolio Backend Developer — Eduard Alejandro Vega Díaz
 
+**URL en producción:** https://alejandro1593.github.io/portafolio-EduardVega/
+
 Portafolio personal con estética de editor de código / terminal, diseñado para mostrar mi perfil como desarrollador backend. Construido con HTML, CSS y JavaScript puro, sin frameworks ni dependencias externas.
 
 ## Características
